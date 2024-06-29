@@ -9,6 +9,7 @@
         "khanamiryan/qrcode-detector-decoder": "^2.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "midtrans/midtrans-php": "^2.5",
         "simplesoftwareio/simple-qrcode": "^4.2"
     },
     "require-dev": {
