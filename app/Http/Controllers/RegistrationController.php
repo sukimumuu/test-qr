@@ -40,4 +40,16 @@ class RegistrationController extends Controller
     public function form(){
         return view('admin.formFunRun');
     }
+
+    public function hasilScan(){
+        return view('admin.hasilScan');
+    }
+
+    public function pembayaranBerhasil(){
+        return view('admin.pembayaranBerhasil');
+    }
+
+    public function pembayaranGagal(){
+        return view('admin.pembayaranGagal');
+    }
 }
