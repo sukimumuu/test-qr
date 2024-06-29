@@ -17,86 +17,60 @@
             <div class="row">
                 <div class="card gap-4">
                     <div class="p-3">
-                        <div class="row col-12 col-md-12">
+                        <div class="row col-12 col-md-12 justify-content-between mx-auto">
                             <div class="col-4 col-md-4">
-                                <span>Rotary Purwokerto</span>
+                                <img src="{{ asset('asset/img/rotary wheel.webp') }}" width="50px" alt="">
                             </div>
-                            <div class="col-4 col-md-4">
+                            {{-- <div class="col-4 col-md-4">
                                 <span>Bank Indonesia</span>
-                            </div>
-                            <div class="col-4 col-md-4">
-                                <span>Nemolab</span>
+                            </div> --}}
+                            <div class="col-4 col-md-4 d-flex justify-content-end">
+                                <img src="{{ asset('asset/img/Logo Nemolab.png') }}" width="50px" alt="">
                             </div>
                         </div>
                     </div>
 
                     <div class="card-content">
                         <div class="row">
-                            <i class="ri-checkbox-circle-fill d-flex justify-content-center" style="font-size: 10rem"></i>
+                            <i class="ri-checkbox-circle-fill d-flex justify-content-center text-success" style="font-size: 10rem"></i>
                             <h3 class="fw-bold d-flex justify-content-center mb-3">Sobat Lari Telah terverifikasi</h3>
                             <form action="">
                                 <div class="row col-12 col-md-12">
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Nama</label>
+                                        <span>Nama :</span>
                                         <span>Vindra Arya Yulian</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Gender</label>
-                                        <span>Vindra Arya Yulian</span>
+                                        <span>Gender :</span>
+                                        <span>Male</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="" placeholder="Masukan Email Anda">
+                                        <span>Email :</span>
+                                        <span>vindrayulian@gmail.com</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="" placeholder="Masukan Password Anda">
+                                        <span>Domisili :</span>
+                                        <span>Purwokerto</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Provinsi</label>
-                                        <select id="inputState" class="form-select">
-                                            <option selected>Pilih Provinsi</option>
-                                            <option>Jawa Tengah</option>
-                                            <option>Jawa Timur</option>
-                                          </select>
+                                        <span>Size Jersey :</span>
+                                        <span>L</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Kabupaten</label>
-                                        <select id="inputState" class="form-select">
-                                            <option selected>Pilih Kabupaten</option>
-                                            <option>Banyumas</option>
-                                            <option>Purbalingga</option>
-                                            <option>Surabaya</option>
-                                            <option>Malang</option>
-                                          </select>
+                                        <span>Waktu Pembayaran :</span>
+                                        <span>Sabtu, 29 Juni 2024</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Kecamatan</label>
-                                        <select id="inputState" class="form-select">
-                                            <option selected>Pilih Kecamatan</option>
-                                            <option>Purwokerto</option>
-                                            <option>Kali Cupak</option>
-                                          </select>
+                                        <span>Via Pembayaran :</span>
+                                        <span>BCA</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Nomor HP</label>
-                                        <input type="text" class="form-control" id="" placeholder="Masukan Nomor HP Anda">
-                                        <span class="text-secondary">*Optional</span>
+                                        <span>Total :</span>
+                                        <span>150.000</span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Size Jersey</label>
-                                        <select id="inputState" class="form-select">
-                                            <option selected>Pilih Size</option>
-                                            <option>S</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XL</option>
-                                            <option>XXL</option>
-                                            <option>XXXL</option>
-                                          </select>
-                                    </div>
-                                    <div class="mb-3 d-flex justify-content-center">
-                                        <a href=""><button class="btn btn-primary" type="button">Daftar</button></a>
+                                        <span>Status :</span>
+                                        <span>Lunas</span>
                                     </div>
                                 </div>
                             </form>

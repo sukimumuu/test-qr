@@ -11,6 +11,17 @@
 <body>
     <div class="container border border-1 p-3 mt-5">
         <div class="row col-12 col-md-12 justify-content-center">
+            <div class="row col-12 col-md-12 justify-content-between mx-auto mb-5">
+                <div class="col-4 col-md-4">
+                    <img src="{{ asset('asset/img/rotary wheel.webp') }}" width="50px" alt="">
+                </div>
+                {{-- <div class="col-4 col-md-4">
+                    <span>Bank Indonesia</span>
+                </div> --}}
+                <div class="col-4 col-md-4 d-flex justify-content-end">
+                    <img src="{{ asset('asset/img/Logo Nemolab.png') }}" width="50px" alt="">
+                </div>
+            </div>
             <h1 class="d-flex justify-content-center">Scan QR Code</h1>
             <div id="reader" style="width: 600px;"></div>
         </div>
