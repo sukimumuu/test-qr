@@ -145,8 +145,10 @@ class RegistrationController extends Controller
         return view('admin.formFunRun');
     }
 
-    public function hasilScan(){
-        return view('admin.hasilScan');
+    public function hasilScan($id){
+        // $userId = $request->query('user_id');
+        $user = User::find($id);
+        return view('admin.hasilScan', compact('user'));
     }
 
     public function pembayaranBerhasil(){

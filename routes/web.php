@@ -16,7 +16,7 @@ Route::post('/register', [RegistrationController::class, 'register'])->name('reg
 Route::post('/verify-qr', [AdminController::class, 'verifyQrCode']);
 
 Route::get('/', [RegistrationController::class, 'form'])->name('form');
-Route::get('/hasilScan', [RegistrationController::class, 'hasilScan'])->name('hasilScan');
+Route::get('/hasilScan/{id}', [RegistrationController::class, 'hasilScan'])->name('hasilScan');
 Route::get('/pembayaranBerhasil', [RegistrationController::class, 'pembayaranBerhasil'])->name('pembayaranBerhasil');
 Route::get('/pembayaranGagal', [RegistrationController::class, 'pembayaranGagal'])->name('pembayaranGagal');
 

@@ -38,23 +38,23 @@
                                 <div class="row col-12 col-md-12">
                                     <div class="mb-3">
                                         <span>Nama :</span>
-                                        <span>Vindra Arya Yulian</span>
+                                        <span>{{ $user->name }}</span>
                                     </div>
                                     <div class="mb-3">
                                         <span>Gender :</span>
-                                        <span>Male</span>
+                                        <span>{{ $user->gender }}</span>
                                     </div>
                                     <div class="mb-3">
                                         <span>Email :</span>
-                                        <span>vindrayulian@gmail.com</span>
+                                        <span>{{ $user->email }}</span>
                                     </div>
                                     <div class="mb-3">
                                         <span>Domisili :</span>
-                                        <span>Purwokerto</span>
+                                        <span>{{ $user->domisili }}</span>
                                     </div>
                                     <div class="mb-3">
                                         <span>Size Jersey :</span>
-                                        <span>L</span>
+                                        <span>{{ $user->size }}</span>
                                     </div>
                                     <div class="mb-3">
                                         <span>Waktu Pembayaran :</span>
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <span>Via Pembayaran :</span>
-                                        <span>BCA</span>
+                                        <span>Gopay</span>
                                     </div>
                                     <div class="mb-3">
                                         <span>Total :</span>

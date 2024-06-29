@@ -50,8 +50,8 @@
                                         <label for="" class="form-label">Gender</label>
                                         <select id="inputState" class="form-select" name="gender">
                                             <option selected>Pilih gender</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
                                           </select>
                                     </div>
                                     <div class="mb-3">
@@ -66,26 +66,26 @@
                                         <label for="" class="form-label">Provinsi</label>
                                         <select id="inputState" class="form-select" name="domisili">
                                             <option selected>Pilih Provinsi</option>
-                                            <option value="jateng">Jawa Tengah</option>
-                                            <option value="jatim">Jawa Timur</option>
+                                            <option value="Jawa Tengah">Jawa Tengah</option>
+                                            <option value="Jawa Timur">Jawa Timur</option>
                                           </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kabupaten</label>
                                         <select id="inputState" class="form-select" name="distrik">
                                             <option selected>Pilih Kabupaten</option>
-                                            <option value="banyumas">Banyumas</option>
-                                            <option value="purbalingga">Purbalingga</option>
-                                            <option value="surabaya">Surabaya</option>
-                                            <option value="malang">Malang</option>
+                                            <option value="Banyumas">Banyumas</option>
+                                            <option value="Purbalingga">Purbalingga</option>
+                                            <option value="Surabaya">Surabaya</option>
+                                            <option value="Malang">Malang</option>
                                           </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kecamatan</label>
                                         <select id="inputState" class="form-select" name="kecamatan">
                                             <option selected>Pilih Kecamatan</option>
-                                            <option value="purwokerto">Purwokerto</option>
-                                            <option value="kalicupak">Kalicupak</option>
+                                            <option value="Purwokerto">Purwokerto</option>
+                                            <option value="Kalicupak">Kalicupak</option>
                                           </select>
                                     </div>
                                     <div class="mb-3">
@@ -97,12 +97,12 @@
                                         <label for="" class="form-label">Size Jersey</label>
                                         <select id="inputState" class="form-select" name="size">
                                             <option selected>Pilih Size</option>
-                                            <option value="s">S</option>
-                                            <option value="m">M</option>
-                                            <option value="l">L</option>
-                                            <option value="xl">XL</option>
-                                            <option value="xxl">XXL</option>
-                                            <option value="xxxl">XXXL</option>
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                            <option value="XXL">XXL</option>
+                                            <option value="XXXl">XXXL</option>
                                           </select>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-center">

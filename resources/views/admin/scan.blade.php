@@ -37,7 +37,9 @@
                     qr_code: qrMessage
                 },
                 success: function(response) {
-                    alert(response.message);
+                    // alert(response.message);
+                    const newUrl = '/hasilScan/' + response.user.id;
+                    window.location.href = newUrl;
                 },
                 error: function(response) {
                     alert('Error: ' + response.responseJSON.message);

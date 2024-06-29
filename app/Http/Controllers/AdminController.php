@@ -16,7 +16,10 @@ class AdminController extends Controller
         $user = User::where('email', $request->qr_code)->first();
 
         if ($user) {
-            return redirect()->route('hasilScan');
+            return response()->json([
+                'message' => 'User is registered: ' . $user->name,
+                'user' => $user
+            ]);
         } else {
             return response()->json(['message' => 'User not found'], 404);
         }
