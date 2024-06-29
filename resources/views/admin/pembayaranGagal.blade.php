@@ -17,15 +17,15 @@
             <div class="row">
                 <div class="card gap-4">
                     <div class="p-3">
-                        <div class="row col-12 col-md-12">
+                        <div class="row col-12 col-md-12 justify-content-between mx-auto">
                             <div class="col-4 col-md-4">
-                                <span>Rotary Purwokerto</span>
+                                <img src="{{ asset('asset/img/rotary wheel.webp') }}" width="50px" alt="">
                             </div>
-                            <div class="col-4 col-md-4">
+                            {{-- <div class="col-4 col-md-4">
                                 <span>Bank Indonesia</span>
-                            </div>
-                            <div class="col-4 col-md-4">
-                                <span>Nemolab</span>
+                            </div> --}}
+                            <div class="col-4 col-md-4 d-flex justify-content-end">
+                                <img src="{{ asset('asset/img/Logo Nemolab.png') }}" width="50px" alt="">
                             </div>
                         </div>
                     </div>
