@@ -36,4 +36,8 @@ class RegistrationController extends Controller
 
         return response()->json(['message' => 'User registered and QR code sent to email.']);
     }
+
+    public function form(){
+        return view('admin.formFunRun');
+    }
 }

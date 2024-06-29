@@ -14,3 +14,7 @@ Route::get('/scan', function () {
 
 Route::post('/register', [RegistrationController::class, 'register'])->name('register');
 Route::post('/verify-qr', [AdminController::class, 'verifyQrCode']);
+
+Route::get('/form', [RegistrationController::class, 'form'])->name('form');
+
+
