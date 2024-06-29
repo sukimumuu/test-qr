@@ -14,3 +14,10 @@ Route::get('/scan', function () {
 
 Route::post('/register', [RegistrationController::class, 'register'])->name('register');
 Route::post('/verify-qr', [AdminController::class, 'verifyQrCode']);
+
+Route::get('/form', [RegistrationController::class, 'form'])->name('form');
+Route::get('/hasilScan', [RegistrationController::class, 'hasilScan'])->name('hasilScan');
+Route::get('/pembayaranBerhasil', [RegistrationController::class, 'pembayaranBerhasil'])->name('pembayaranBerhasil');
+Route::get('/pembayaranGagal', [RegistrationController::class, 'pembayaranGagal'])->name('pembayaranGagal');
+
+
