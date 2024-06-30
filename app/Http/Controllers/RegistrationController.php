@@ -75,35 +75,14 @@ class RegistrationController extends Controller
         $payment->payment_link = $response->redirect_url;
         $payment->save();
         
-        $qrCode = QrCode::format('png')
-                         ->size(300)
-                         ->generate($user->email);
-
+        $qrCode = QrCode::format('png')->size(300)->generate($user->email);
         $qrCodePath = public_path('qrcodes/' . $user->id . '.png');
-        Log::info('Saving QR Code to: ' . $qrCodePath);
-
         // Save the QR code to the specified path
         file_put_contents($qrCodePath, $qrCode);
-
-        // Check if file was created
-        if (file_exists($qrCodePath)) {
-            Log::info('QR Code file created: ' . $qrCodePath);
-        } else {
-            Log::error('QR Code file not created.');
-        }
-
         // Send the email with the QR code attachment
         Mail::send('emails.qrcode', ['user' => $user], function ($message) use ($user, $qrCodePath) {
             $message->to($user->email);
             $message->subject('Your Registration QR Code');
-
-            // Check if the file exists before attaching
-            if (file_exists($qrCodePath)) {
-                Log::info('Attaching QR Code to email: ' . $qrCodePath);
-                $message->attach($qrCodePath);
-            } else {
-                Log::error('QR Code file not found: ' . $qrCodePath);
-            }
         });
 
         return redirect($response->redirect_url);
@@ -118,11 +97,9 @@ class RegistrationController extends Controller
         $response = json_decode($response->body());
 
         $payment = Payment::where('order_id', $response->order_id)->firstOrFail();
-
         if($payment->status === 'settlement' || $payment->status === 'capture'){
             return response()->json('Pembayaran sudah terproses');
         }
-
         if($response->transaction_status === 'capture'){
             $payment->status = 'capture';
         } else if($response->transaction_status === 'settlement'){
