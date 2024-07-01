@@ -5,43 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form FunRun</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
+    <link rel="stylesheet" href="{{ asset('asset/css/form/main.css') }}">
+</head>
   <body>
 
     <section>
         <div class="container">
-            <div class="row">
+            <div class="row m-5">
+                <div class="row col-12 col-md-12 justify-content-between mx-auto mb-3">
+                    <div class="col-4 col-md-4">
+                        <img src="{{ asset('asset/img/rotary wheel.webp') }}" width="50px" alt="">
+                    </div>
+                    {{-- <div class="col-4 col-md-4">
+                        <span>Bank Indonesia</span>
+                    </div> --}}
+                    <div class="col-4 col-md-4 d-flex justify-content-end">
+                        <img src="{{ asset('asset/img/Logo Nemolab.png') }}" width="50px" alt="">
+                    </div>
+                </div>
+                <img src="{{ asset('asset/img/vindra.jpeg') }}" class="mx-auto" style="width: 150px" alt="">
+                <h3 class="d-flex justify-content-center mb-3 text-light">Hello Sobat lari Selamat datang di FunRun Rotary</h3>
                 <div class="card gap-4">
-                    <div class="p-3">
+                    {{-- <div class="p-3">
                         <div class="row col-12 col-md-12 justify-content-between mx-auto">
                             <div class="col-4 col-md-4">
                                 <img src="{{ asset('asset/img/rotary wheel.webp') }}" width="50px" alt="">
                             </div>
-                            {{-- <div class="col-4 col-md-4">
+                            <div class="col-4 col-md-4">
                                 <span>Bank Indonesia</span>
-                            </div> --}}
+                            </div>
                             <div class="col-4 col-md-4 d-flex justify-content-end">
                                 <img src="{{ asset('asset/img/Logo Nemolab.png') }}" width="50px" alt="">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     @if ($errors->any())
-        <div class="error-summary">
-            <h4>There are errors in the form:</h4>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            <ul>
-        </div>
-    @endif
+                        <div class="error-summary">
+                            <h4>There are errors in the form:</h4>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            <ul>
+                        </div>
+                    @endif
                     <div class="card-content">
                         <div class="row">
-                            <img src="{{ asset('asset/img/vindra.jpeg') }}" class="mx-auto" style="width: 150px" alt="">
-                            <h3 class="fw-bold d-flex justify-content-center mb-3">Hello Sobat lari Selamat datang di FunRun Rotary</h3>
+                            {{-- <img src="{{ asset('asset/img/vindra.jpeg') }}" class="mx-auto" style="width: 150px" alt=""> --}}
+                            {{-- <h3 class="fw-bold d-flex justify-content-center mb-3">Hello Sobat lari Selamat datang di FunRun Rotary</h3> --}}
                             <form action="{{ route('register') }}" method="POST">
                                 @csrf
-                                <div class="row col-12 col-md-12">
+                                <div class="row col-12 col-md-12 p-3">
+                                    <div class="mb-3">
+                                        <h3 class="text-dark border-2 border-bottom">Registrasi</h3>
+                                    </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Nama</label>
                                         <input type="text" class="form-control" name="name" id="" placeholder="Masukan Nama Anda">
