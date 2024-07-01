@@ -25,7 +25,10 @@ class User extends Authenticatable
         'distrik',
         'kecamatan',
         'phone',
-        'size'
+        'size',
+        'tokens_account',
+        'participant_number',
+        'verification_admin',
     ];
 
     /**
