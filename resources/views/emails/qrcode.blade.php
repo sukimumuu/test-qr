@@ -29,7 +29,7 @@
                 <li>Peserta FunRun dapat mengambil GoodieBag setelah berhasil melakukan verifikasi</li>
             </ol>
 
-            <span class="fw-bold">Registrasi ID : A9BDJSAD(kshgfkghdfjkhdvhf)</span>
+            <span class="fw-bold fs-3 d-flex justify-content-center">Nomor Peserta : 00001</span>
 
             <ul class="ms-5">
                 <li>Tunjukan Barcode ini Saat registrasi ulang dan pengambilan GoodieBag</li>
