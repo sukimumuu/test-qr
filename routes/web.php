@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\GenerateRandom;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QrCodeController;

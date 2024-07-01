@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Log;
 use App\Models\User;
 use Midtrans\Config;
+use App\GenerateRandom;
 use App\Models\Payment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -33,7 +34,17 @@ class RegistrationController extends Controller
         return redirect()->back()
                          ->withErrors($validator)
                          ->withInput();
-    }
+        }
+        $numberRand = new GenerateRandom();
+        $tokenAcc = $numberRand->generateRandomString(10);
+        $cekParticipant = User::where('participant_number')->first();
+        if(!$cekParticipant){
+            $startNumber = 1;
+            $partitionNumber = str_pad($startNumber, 4, '0', STR_PAD_LEFT);
+        } else {
+            $startNumber = max($cekParticipant) + 1;
+            $partitionNumber = str_pad($startNumber, 4, '0', STR_PAD_LEFT);
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -43,6 +54,8 @@ class RegistrationController extends Controller
             'kecamatan' => $request->kecamatan,
             'phone' => $request->phone,
             'size' => $request->size,
+            'tokens_account' => $tokenAcc,
+            'participant_number' => $partitionNumber,
             'password' => Hash::make($request->password),
         ]);
 
