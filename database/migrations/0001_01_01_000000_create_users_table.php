@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('size');
             $table->string('tokens_account');
             $table->string('participant_number');
-            $table->date('verification_admin')->nullable();
+            $table->timestamp('verification_admin', precision: 0)->nullable();
             $table->timestamps();
         });
 

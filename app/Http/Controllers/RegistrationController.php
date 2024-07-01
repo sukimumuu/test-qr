@@ -37,13 +37,12 @@ class RegistrationController extends Controller
         }
         $numberRand = new GenerateRandom();
         $tokenAcc = $numberRand->generateRandomString(10);
-        $cekParticipant = User::where('participant_number')->first();
-        if(!$cekParticipant){
-            $startNumber = 1;
-            $partitionNumber = str_pad($startNumber, 4, '0', STR_PAD_LEFT);
+        $cekParticipant = User::orderBy('participant_number', 'desc')->first();
+        if($cekParticipant){
+            $lastNumber = intval($cekParticipant->participant_number);
+            $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
         } else {
-            $startNumber = max($cekParticipant) + 1;
-            $partitionNumber = str_pad($startNumber, 4, '0', STR_PAD_LEFT);
+            $newNumber = '0001';
         }
         $user = User::create([
             'name' => $request->name,
@@ -55,7 +54,7 @@ class RegistrationController extends Controller
             'phone' => $request->phone,
             'size' => $request->size,
             'tokens_account' => $tokenAcc,
-            'participant_number' => $partitionNumber,
+            'participant_number' => $newNumber,
             'password' => Hash::make($request->password),
         ]);
 
@@ -90,7 +89,7 @@ class RegistrationController extends Controller
         
         $qrCode = QrCode::format('png')
                          ->size(300)
-                         ->generate($user->email);
+                         ->generate($user->id);
 
         $qrCodePath = public_path('qrcodes/' . $user->id . '.png');
         Log::info('Saving QR Code to: ' . $qrCodePath);
