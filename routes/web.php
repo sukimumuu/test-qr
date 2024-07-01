@@ -5,9 +5,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\RegistrationController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/qr', function () {
+    return view('emails.qrcode');
+});
 Route::get('/scan', function () {
     return view('admin.scan');
 });
