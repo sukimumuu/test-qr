@@ -11,7 +11,7 @@
 <body>
     <div class="container-fluid m-4">
         <h1 class="fw-bold">Hello,</h1>
-        <div class="row">
+        <div class="row col-12 col-md-12">
             <span class="text-secondary">Anda telah berhasil mendaftar pada FunRun Rotary 2024 dengan pembayaran menggunakan Gopay</span>
             <span class="text-secondary mb-3">Terima kasih atas pembayaran Anda. Ini adalah konfirmasi Anda untuk Maybank Marathon 2024.</span>
             <h2 class="fw-bold mb-3">Tunjukkan email ini pada saat registrasi ulang di event FunRun dan siapkan kartu Identitas (KTP/SIM/Paspor/KITAS) untuk pengambilan Goodiebag Anda</h2>
@@ -32,7 +32,7 @@
             <span class="fw-bold fs-3 d-flex justify-content-center">Nomor Peserta : 00001</span>
 
             <ul class="ms-5">
-                <li>Tunjukan Barcode ini Saat registrasi ulang dan pengambilan GoodieBag</li>
+                <li class="mb-3">Tunjukan Barcode ini Saat registrasi ulang dan pengambilan GoodieBag</li>
                 <img src="{{ asset('asset/img/vindra.jpeg') }}" style="width: 200px;" alt="">
             </ul>
 
@@ -60,7 +60,7 @@
                 <div class="border-2 border-bottom"></div>
             </div>
 
-
+            <span class="d-flex justify-content-center mt-3">Thank You, Happy Run Sobat Rotary</span>
         </div>
     </div>
 
