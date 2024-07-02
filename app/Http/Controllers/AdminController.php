@@ -13,9 +13,11 @@ class AdminController extends Controller
         // Log request data
         Log::info('QR Code Data: ' . $request->qr_code);
 
-        $user = User::where('email', $request->qr_code)->first();
+        $user = User::where('id', $request->qr_code)->first();
 
         if ($user) {
+            $user->verification_admin = now()->format('Y-m-d h:m:s');
+            $user->save();
             return response()->json([
                 'message' => 'User is registered: ' . $user->name,
                 'user' => $user

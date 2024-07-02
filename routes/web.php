@@ -1,15 +1,13 @@
 <?php
 
-use App\Models\User;
-use App\GenerateRandom;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\RegistrationController;
 
-Route::get('/qr', function () {
-    return view('emails.qrcode');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/scan', function () {
     return view('admin.scan');
 });
