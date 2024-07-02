@@ -86,7 +86,7 @@ class RegistrationController extends Controller
         $payment->email = $request->email;
         $payment->payment_link = $response->redirect_url;
         $payment->save();
-        
+
         $qrCode = QrCode::format('png')
                          ->size(300)
                          ->generate($user->id);
@@ -157,17 +157,17 @@ class RegistrationController extends Controller
         return view('admin.formFunRun');
     }
 
-    public function hasilScan($id){
+    public function hasilScan(){
         // $userId = $request->query('user_id');
-        $user = User::find($id);
-        return view('admin.hasilScan', compact('user'));
+        // $user = User::find($id);
+        return view('admin.hasilScan');
     }
 
-    public function pembayaranBerhasil(){
+    public function registrationSuccess(){
         return view('admin.pembayaranBerhasil');
     }
 
-    public function pembayaranGagal(){
+    public function registrationFailed(){
         return view('admin.pembayaranGagal');
     }
 }

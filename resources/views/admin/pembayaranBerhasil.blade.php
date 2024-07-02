@@ -27,7 +27,7 @@
                                     <img src="{{ asset('asset/img/register-success.png') }}" class="mx-auto" style="width: 400px" alt="">
                                     <h3 class="fw-bold text-center">Pembayaran Kamu Berhasil!!</h3>
                                     <div class="d-flex justify-content-center align-items-center gap-2">
-                                        <span>Terima kasih atas pembayaran Anda Kita tunggu di FunRun Rotary</span>
+                                        <span>Terima kasih atas pembayaran Anda Kita tunggu di FunRun Rotary Purwokerto</span>
                                         <a href="" class="btn btn-submit">Kembali ke halaman utama</a>
                                     </div>
                                 </div>

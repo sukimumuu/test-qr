@@ -22,7 +22,7 @@
                             <span class="fw-bold">Logo FunRun</span>
                         </div>
                     </div>
-                    <h3 class="text-center fw-bold mt-5 mb-3">Pendaftaran Event FunRun Rotary <br> Purwokerto 2024</h3>
+                    <h3 class="text-center fw-bold mt-3 mb-3">Pendaftaran Event FunRun Rotary <br> Purwokerto 2024</h3>
 
                     <div class="row col-12 col-md-12 mx-auto">
                         <div class="card p-3 mb-3 gradient-background kaca">
@@ -155,12 +155,32 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 text-end">
-                                        <a href="" class="btn btn-submit rounded-5 text-dark fw-bold border-1 border">Daftar</a>
+                                        <a href="" class="btn btn-submit rounded-5 text-dark fw-bold border-1 border"  data-bs-toggle="modal" data-bs-target="#daftar">Daftar</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="daftar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Anda akan melalukan pembayaran</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <span>Apakah anda setuju untuk melakukan pembayaran ?</span>
+                              <span>click tombol bayar untuk melanjutkan pendaftaran</span>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-outline-dark rounded-5 text-dark fw-bold border-1 border" data-bs-dismiss="modal" aria-label="Close">Batal</button>
+                                <a href="" class="btn btn-submit rounded-5 text-dark fw-bold border-1 border">Bayar</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End of Modal -->
                 </div>
             </div>
         </div>
