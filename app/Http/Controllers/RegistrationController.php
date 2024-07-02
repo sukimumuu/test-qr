@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Log;
+use Midtrans\Snap;
 use App\Models\User;
 use Midtrans\Config;
 use App\GenerateRandom;
 use App\Models\Payment;
+use Midtrans\Notification;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -86,10 +88,10 @@ class RegistrationController extends Controller
         $payment->email = $request->email;
         $payment->payment_link = $response->redirect_url;
         $payment->save();
-        
+
         $qrCode = QrCode::format('png')
                          ->size(300)
-                         ->generate($user->id);
+                         ->generate($user->tokens_account);
 
         $qrCodePath = public_path('qrcodes/' . $user->id . '.png');
         Log::info('Saving QR Code to: ' . $qrCodePath);
@@ -121,44 +123,12 @@ class RegistrationController extends Controller
         return redirect($response->redirect_url);
     }
 
-    public function webhook(Request $request){
-        $auth = base64_encode(env('MIDTRANS_SERVER_KEY'));
-         $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Authorization' => "Basic $auth",
-        ])->get("https://api.sandbox.midtrans.com/v2/$request->order_id/status");
-        $response = json_decode($response->body());
-
-        $payment = Payment::where('order_id', $response->order_id)->firstOrFail();
-
-        if($payment->status === 'settlement' || $payment->status === 'capture'){
-            return response()->json('Pembayaran sudah terproses');
-        }
-
-        if($response->transaction_status === 'capture'){
-            $payment->status = 'capture';
-        } else if($response->transaction_status === 'settlement'){
-            $payment->status = 'settlement';
-        } else if($response->transaction_status === 'pending'){
-            $payment->status = 'pending';
-        } else if($response->transaction_status === 'deny'){
-            $payment->status = 'deny';
-        } else if($response->transaction_status === 'expire'){
-            $payment->status = 'expire';
-        } else if($response->transaction_status === 'cancel'){
-            $payment->status = 'cancel';
-        }
-        $payment->save();
-        return response()->json('berhasil');
-
-    }
 
     public function form(){
         return view('admin.formFunRun');
     }
 
     public function hasilScan($id){
-        // $userId = $request->query('user_id');
         $user = User::find($id);
         return view('admin.hasilScan', compact('user'));
     }

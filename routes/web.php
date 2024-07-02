@@ -11,7 +11,6 @@ use App\Http\Controllers\RegistrationController;
 Route::get('/scan', function () {
     return view('admin.scan');
 });
-
 Route::post('/register', [RegistrationController::class, 'register'])->name('register');
 Route::post('/verify-qr', [AdminController::class, 'verifyQrCode']);
 

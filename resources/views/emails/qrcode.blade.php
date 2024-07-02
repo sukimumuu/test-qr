@@ -31,11 +31,8 @@
 
             <span class="fw-bold fs-3 d-flex justify-content-center">Nomor Peserta : {{ $user->participant_number }}</span>
 
-            <img src="{{ asset('asset/img/vindra.jpeg') }}" class="mx-auto mt-2" style="width: 300px;" alt="">
-            <ul class="ms-5">
-                <li>Tunjukan Barcode ini Saat registrasi ulang dan pengambilan GoodieBag</li>
-                <img src="{{ asset('asset/img/vindra.jpeg') }}" style="width: 200px;" alt="">
-            </ul>
+            <img src="{{ $message->embed('qrcodes/'.$user->id.'.png') }}" class="mx-auto mt-2" style="width: 300px;" alt="">
+            <li>Tunjukan Barcode ini Saat registrasi ulang dan pengambilan GoodieBag</li>
 
             <div class="row col-12 col-md-12">
                 <div class="col-10 col-md-10 d-flex justify-content-end">
