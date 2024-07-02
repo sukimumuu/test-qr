@@ -89,6 +89,7 @@ class RegistrationController extends Controller
         $payment->payment_link = $response->redirect_url;
         $payment->save();
 
+
         $qrCode = QrCode::format('png')
                          ->size(300)
                          ->generate($user->tokens_account);
@@ -133,11 +134,11 @@ class RegistrationController extends Controller
         return view('admin.hasilScan', compact('user'));
     }
 
-    public function pembayaranBerhasil(){
+    public function registrationSuccess(){
         return view('admin.pembayaranBerhasil');
     }
 
-    public function pembayaranGagal(){
+    public function registrationFailed(){
         return view('admin.pembayaranGagal');
     }
 }
