@@ -48,3 +48,11 @@
 .btn-submit{
     background-color: #E4FF3C;
 }
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 73%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
