@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form FunRun</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('asset/css/form/main.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('asset/css/form/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
 </head>
@@ -25,7 +25,8 @@
                     </div>
                     <h3 class="text-center fw-bold mt-3 mb-3">Pendaftaran Event FunRun Rotary <br> Purwokerto 2024</h3>
                     <div class="row col-12 col-md-12 mx-auto">
-                        <form action="" method="post">
+                        <form action="{{ route('register') }}" method="post">
+                            @csrf
                             <div class="card p-0 mb-3 gradient-background kaca">
                                 <div class="card-header" style="background: transparent; border: none; z-index: 2">
                                     <h3 class="text-dark">Registration</h3>
@@ -36,13 +37,13 @@
                                         <div class="col-12 col-md-12">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Nama Lengkap</label>
-                                                <input type="text" class="form-control" name="" placeholder="Nama lengkap" aria-label="">
+                                                <input type="text" class="form-control" name="name" placeholder="Nama lengkap" aria-label="">
                                             </div>
                                         </div>
                                         <div class="col-6 col-md-12">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Gender</label>
-                                                <select id="inputState" class="form-select">
+                                                <select id="inputState" class="form-select" name="gender">
                                                     <option selected>Pilih gender</option>
                                                     <option value="Laki-laki">Laki-laki</option>
                                                     <option value="Perempuan">Perempuan</option>
@@ -52,26 +53,26 @@
                                         <div class="col-6 col-md-12">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Usia</label>
-                                                <input type="text" class="form-control" name="" placeholder="Usia">
+                                                <input type="text" class="form-control" name="age" placeholder="Usia">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Email</label>
-                                                <input type="email" class="form-control" name="" placeholder="masukan email anda">
+                                                <input type="email" class="form-control" name="email" placeholder="masukan email anda">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="mb-3 position-relative">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="password" placeholder="masukan password">
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="masukan password">
                                                 <i class="eye-icon ri-eye-line" id="togglePassword" onclick="togglePassword()"></i>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Provinsi</label>
-                                                <select id="inputState" class="form-select">
+                                                <select id="inputState" class="form-select" name="domisili">
                                                     <option selected>Pilih provinsi</option>
                                                     <option value="Jawa Tengah">Jawa Tengah</option>
                                                     <option value="Jawa Timur">Jawa Timur</option>
@@ -82,7 +83,7 @@
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Kabupaten</label>
-                                                <select id="inputState" class="form-select">
+                                                <select id="inputState" class="form-select" name="distrik">
                                                     <option selected>Pilih kabupaten</option>
                                                     <option value="Banyumas">Banyumas</option>
                                                     <option value="Purbalingga">Purbalingga</option>
@@ -95,7 +96,7 @@
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Kecamatan</label>
-                                                <select id="inputState" class="form-select">
+                                                <select id="inputState" class="form-select" name="kecamatan">
                                                     <option selected>Pilih kecamatan</option>
                                                     <option value="Purwokerto Utara">Purwokerto Utara</option>
                                                     <option value="Baturaden">Baturaden</option>
@@ -106,13 +107,13 @@
                                         <div class="col-12 col-md-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Nomor Handphone</label>
-                                                <input type="text" class="form-control" name="" placeholder="masukan nomor handphone">
+                                                <input type="text" class="form-control" name="phone" placeholder="masukan nomor handphone">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Size Jersey</label>
-                                                <select id="inputState" class="form-select">
+                                                <select id="inputState" class="form-select" name="size">
                                                     <option selected>Pilih size jersey</option>
                                                     <option value="S">S</option>
                                                     <option value="M">M</option>
@@ -126,35 +127,35 @@
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Nomor Kontak Darurat</label>
-                                                <input type="text" class="form-control" name="" placeholder="nomor kontak darurat">
+                                                <input type="text" class="form-control" name="phone_urgent" placeholder="nomor kontak darurat">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Nama Kontak darurat</label>
-                                                <input type="text" class="form-control" name="" placeholder="nama kontak darurat">
+                                                <input type="text" class="form-control" name="contant_urgent" placeholder="nama kontak darurat">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Hubungan Dengan Kontak Darurat</label>
-                                                <input type="text" class="form-control" name="" placeholder="hubungan dengan kontak darurat">
+                                                <input type="text" class="form-control" name="relation_urgent" placeholder="hubungan dengan kontak darurat">
                                             </div>
                                         </div>
                                         <div class="col-12" id="komunitasDiv">
                                             <div class="mb-3">
-                                                <label for="komunitas" class="form-label">Komunitas</label>
-                                                <select id="komunitas" name="komunitas" class="form-control" onchange="toggleNamaKomunitas()">
-                                                    <option value="">Komunitas</option>
-                                                    <option value="komunitas">Komunitas</option>
-                                                    <option value="individu">Individu</option>
+                                                <label for="komunitas" class="form-label">Komunitas / Individu</label>
+                                                <select id="komunitas" name="community" class="form-control" onchange="toggleNamaKomunitas()">
+                                                    <option selected>Pilih</option>
+                                                    <option value="Komunitas">Komunitas</option>
+                                                    <option value="Individu">Individu</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6" id="namaKomunitasContainer" style="display: none;">
                                             <div class="mb-3">
                                                 <label for="namaKomunitas">Nama Komunitas</label>
-                                                <input type="text" id="namaKomunitas" name="namaKomunitas" class="form-control mt-2" placeholder="nama komunitas">
+                                                <input type="text" id="namaKomunitas" name="name_community" class="form-control mt-2" placeholder="nama komunitas">
                                             </div>
                                         </div>
                                         <div class="mb-3 text-end">
@@ -196,7 +197,7 @@
             const namaKomunitasContainer = document.getElementById('namaKomunitasContainer');
             const komunitasDiv = document.getElementById('komunitasDiv');
 
-            if (komunitasSelect.value === 'komunitas') {
+            if (komunitasSelect.value === 'Komunitas') {
                 namaKomunitasContainer.style.display = 'block';
                 komunitasDiv.className = 'col-12 col-md-6';
             } else {

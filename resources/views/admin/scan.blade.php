@@ -42,7 +42,7 @@
                     window.location.href = newUrl;
                 },
                 error: function(response) {
-                    alert('Error: ' + response.responseJSON.message);
+                    alert(response.responseJSON.message);
                 }
             });
         }

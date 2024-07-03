@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('contant_urgent');
             $table->string('relation_urgent');
             $table->string('community');
-            $table->string('name_community');
+            $table->string('name_community')->nullable();
             $table->string('tokens_account');
             $table->string('participant_number');
             $table->string('kode_pay');
