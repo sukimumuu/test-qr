@@ -1,28 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment Page</title>
-</head>
-<body>
-    <h1>Complete your payment</h1>
-    <button id="pay-button">Pay!</button>
-
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="@php env('MIDTRANS_CLIENT_KEY') @endphp"></script>
-    <script type="text/javascript">
-        var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function () {
-            snap.pay('{{ $snapToken }}', {
-                onSuccess: function(result) {
-                    window.location.href = '/pembayaranBerhasil';
-                },
-                onPending: function(result) {
-                    window.location.href = '/pembayaranGagal';
-                },
-                onError: function(result) {
-                    window.location.href = '/pembayaranGagal';
-                }
+  <h1>Complete your payment</h1>
+    @if(isset($snapToken))
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="@php env('MIDTRANS_CLIENT_KEY') @endphp"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                snap.pay('{{ $snapToken }}', {
+                    onSuccess: function(result) {
+                        window.location.href = '/registration-success';
+                    },
+                    onPending: function(result) {
+                        window.location.href = '/registration-failed';
+                    },
+                    onError: function(result) {
+                        window.location.href = '/registration-failed';
+                    }
+                });
             });
-        });
-    </script>
-</body>
-</html>
+        </script>
+    @else
+        <p>Payment cannot be processed at this moment. Please try again later.</p>
+    @endif

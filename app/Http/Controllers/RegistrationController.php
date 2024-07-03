@@ -30,14 +30,32 @@ class RegistrationController extends Controller
             'distrik' => 'required',
             'kecamatan' => 'required',
             'size' => 'required',
+            'phone' => 'required',
+            'age' => 'required',
+            'phone_urgent' => 'required',
+            'contant_urgent' => 'required',
+            'community' => 'required',
+            'name_community' => 'required',
         ]);
 
         if ($validator->fails()) {
-        return redirect()->back()
-                         ->withErrors($validator)
-                         ->withInput();
+        return redirect()->back()->withErrors($validator)->withInput();
         }
-        $numberRand = new GenerateRandom();
+        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$isProduction = false;
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => Str::uuid(),
+                'gross_amount' => 150000,
+            ),
+            'customer_details' => array(
+                'first_name' => $request->name,
+                'email' => $request->email,
+            ),
+        );
+         $numberRand = new GenerateRandom();
         $tokenAcc = $numberRand->generateRandomString(10);
         $cekParticipant = User::orderBy('participant_number', 'desc')->first();
         if($cekParticipant){
@@ -57,71 +75,19 @@ class RegistrationController extends Controller
             'size' => $request->size,
             'tokens_account' => $tokenAcc,
             'participant_number' => $newNumber,
+            'age' => $request->age,
+            'status' => 'pending',
+            'phone_urgent' => $request->phone_urgent,
+            'contant_urgent' => $request->contant_urgent,
+            'relation_urgent' => $request->relation_urgent,
+            'community' => $request->community,
+            'name_community' => $request->name_community,
+            'participant_number' => $newNumber,
+            'kode_pay' => $params['transaction_details']['order_id'],
             'password' => Hash::make($request->password),
         ]);
-
-        $auth = base64_encode(env('MIDTRANS_SERVER_KEY'));
-        Config::$isProduction = false;
-        Config::$isSanitized = true;
-        Config::$is3ds = true;
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => Str::uuid(),
-                'gross_amount' => 150000,
-            ),
-            'customer_details' => array(
-                'first_name' => $request->name,
-                'email' => $request->email,
-            ),
-        );
-
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Authorization' => "Basic $auth",
-        ])->post('https://app.sandbox.midtrans.com/snap/v1/transactions', $params);
-        $response = json_decode($response->body());
-        $payment = new Payment;
-        $payment->order_id = $params['transaction_details']['order_id'];
-        $payment->status = 'Pending';
-        $payment->price = 150000;
-        $payment->name = $request->name;
-        $payment->email = $request->email;
-        $payment->payment_link = $response->redirect_url;
-        $payment->save();
-
-
-        $qrCode = QrCode::format('png')
-                         ->size(300)
-                         ->generate($user->tokens_account);
-
-        $qrCodePath = public_path('qrcodes/' . $user->id . '.png');
-        Log::info('Saving QR Code to: ' . $qrCodePath);
-
-        // Save the QR code to the specified path
-        file_put_contents($qrCodePath, $qrCode);
-
-        // Check if file was created
-        if (file_exists($qrCodePath)) {
-            Log::info('QR Code file created: ' . $qrCodePath);
-        } else {
-            Log::error('QR Code file not created.');
-        }
-
-        // Send the email with the QR code attachment
-        Mail::send('emails.qrcode', ['user' => $user], function ($message) use ($user, $qrCodePath) {
-            $message->to($user->email);
-            $message->subject('Your Registration QR Code');
-
-            // Check if the file exists before attaching
-            if (file_exists($qrCodePath)) {
-                Log::info('Attaching QR Code to email: ' . $qrCodePath);
-                $message->attach($qrCodePath);
-            } else {
-                Log::error('QR Code file not found: ' . $qrCodePath);
-            }
-        });
-
-        return redirect($response->redirect_url);
+        $snapToken = Snap::getSnapToken($params);
+        return view('pembayaran', ['snapToken' => $snapToken]);
     }
 
 
@@ -140,5 +106,30 @@ class RegistrationController extends Controller
 
     public function registrationFailed(){
         return view('admin.pembayaranGagal');
+    }
+
+    public function paymentHandler(Request $request){
+        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$isProduction = false;
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
+        $hashed = hash("sha512", $request->order_id.$request->status_code.$request->gross_amount.env('MIDTRANS_SERVER_KEY')); 
+        if($hashed == $request->signature_key){
+        if ($request->transaction_status == 'settlement' || $request->transaction_status == 'capture') {
+                $user = User::where('kode_pay', $request->order_id)->first();
+                $user->update(['status'=>'settlement']);
+                // Kirim email ke user
+                $qrCode = QrCode::format('png')->size(300)->generate($user->tokens_account);
+                $qrCodePath = public_path('qrcodes/' . $user->id . '.png');
+                file_put_contents($qrCodePath, $qrCode);
+                // Send the email with the QR code attachment
+                Mail::send('emails.qrcode', ['user' => $user], function ($message) use ($user, $qrCodePath) {
+                    $message->to($user->email);
+                    $message->subject('Your Registration QR Code');
+            });
+        } else if ($request->transaction_status == 'cancel' || $request->transaction_status == 'deny' || $request->transaction_status == 'expire') {
+            return "Pembayaran Gagal !";
+        }
+        }
     }
 }

@@ -12,6 +12,7 @@ Route::get('/scan', function () {
     return view('admin.scan');
 });
 Route::post('/register', [RegistrationController::class, 'register'])->name('register');
+Route::post('/paymentHandler', [RegistrationController::class, 'paymentHandler'])->name('paymentHandler');
 Route::post('/verify-qr', [AdminController::class, 'verifyQrCode']);
 
 Route::get('/', [RegistrationController::class, 'form'])->name('form');

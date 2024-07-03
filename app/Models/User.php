@@ -30,7 +30,14 @@ class User extends Authenticatable
         'tokens_account',
         'participant_number',
         'verification_admin',
-        'status'
+        'status',
+        'age',
+        'phone_urgent',
+        'contant_urgent',
+        'relation_urgent',
+        'community',
+        'name_community',
+        'kode_pay',
     ];
 
     /**

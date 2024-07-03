@@ -22,9 +22,16 @@ return new class extends Migration
             $table->string('kecamatan');
             $table->string('phone');
             $table->string('size');
+            $table->string('age');
+            $table->string('phone_urgent');
+            $table->string('contant_urgent');
+            $table->string('relation_urgent');
+            $table->string('community');
+            $table->string('name_community');
             $table->string('tokens_account');
             $table->string('participant_number');
-            // $table->enum('status', ['settlement','pending','expired','accept','cancel'])->nullable();
+            $table->string('kode_pay');
+            $table->enum('status', ['settlement','pending'])->default('pending');
             $table->timestamp('verification_admin', precision: 0)->nullable();
             $table->timestamps();
         });
