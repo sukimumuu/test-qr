@@ -34,30 +34,6 @@
             <img src="{{ $message->embed('qrcodes/'.$user->id.'.png') }}" class="mx-auto mt-2" style="width: 300px;" alt="">
             <li>Tunjukan Barcode ini Saat registrasi ulang dan pengambilan GoodieBag</li>
 
-            <div class="row col-12 col-md-12">
-                <div class="col-10 col-md-10 d-flex justify-content-end">
-                    <span class="fw-bold">Total Pendaftaran</span>
-                </div>
-                <div class="col-2 col-md-2 d-flex justify-content-start">
-                    <span class="fw-bold">Rp.150.000,00</span>
-                </div>
-                <div class="border-2 border-bottom mb-2"></div>
-                <div class="col-10 col-md-10 d-flex justify-content-end">
-                    <span class="fw-bold">Total Pendaftaran</span>
-                </div>
-                <div class="col-2 col-md-2 d-flex justify-content-start">
-                    <span class="fw-bold">Rp.150.000,00</span>
-                </div>
-                <div class="border-2 border-bottom mb-2"></div>
-                <div class="col-10 col-md-10 d-flex justify-content-end">
-                    <span class="fw-bold">Total</span>
-                </div>
-                <div class="col-2 col-md-2 d-flex justify-content-start">
-                    <span class="fw-bold">Rp.150.000,00</span>
-                </div>
-                <div class="border-2 border-bottom"></div>
-            </div>
-
             <span class="d-flex justify-content-center mt-3">Thank You, Happy Run Sobat Rotary</span>
         </div>
     </div>

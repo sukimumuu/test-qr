@@ -28,7 +28,7 @@
                                     <h3 class="fw-bold text-center">Yah Pembayaran Kamu Gagal</h3>
                                     <div class="d-flex justify-content-center align-items-center gap-2">
                                         <span>Silakan coba lagi pembayaran untuk melakukan pendaftaran</span>
-                                        <a href="" class="btn btn-submit">Kembali ke halaman pendaftaran</a>
+                                        <a href="{{ route('form') }}" class="btn btn-submit">Kembali ke halaman pendaftaran</a>
                                     </div>
                                 </div>
                             </div>

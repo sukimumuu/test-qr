@@ -3,6 +3,7 @@ body{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 
 .gradient-background {
@@ -36,4 +37,23 @@ body{
 
 .btn-submit{
     background-color: #E4FF3C;
+}
+
+table {
+    background: transparent !important;
+}
+th, td {
+    text-align: left;
+}
+@media (max-width: 576px) {
+    th, td {
+        display: inline;
+        text-align: left;
+    }
+    th {
+        margin-top: 10px;
+    }
+    td {
+        margin-bottom: 10px;
+    }
 }
