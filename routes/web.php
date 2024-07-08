@@ -8,9 +8,9 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/sent', function () {
+    return view('auth.email-sent');
+});
 Route::get('/scan', function () {
     return view('admin.scan');
 });

@@ -5,12 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Verifikasi User</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <h3>Silahkan Klik Link Dibawah Ini</h3>
-    <a href="{{ $url }}"><button>Verifikasi</button></a>
-    <footer>
-        Tim Pengembang
-    </footer>
+    <div class="container">
+        <div class="row">
+
+            <h3 class="fw-bold">Hallo, </h3>
+            <span>Click tombol di bawah untuk melalukan verifikasi email kamu</span>
+            <div class="d-flex justify-content-center">
+                <a href="" class="btn btn-dark">Verifikasi Email</a>
+            </div>
+            <footer>
+                <div class="row">
+                    <span class="fw-bold text-secondary">Dari,</span>
+                    <span class="fw-bold text-secondary">FunRun Rotary Purwokerto</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>
