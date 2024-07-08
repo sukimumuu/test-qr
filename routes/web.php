@@ -15,18 +15,18 @@ Route::get('/scan', function () {
     return view('admin.scan');
 });
 Route::get('/alpha-registration', function(){
-    return view('welcome');
+    return view('auth.regis');
 });
 Route::post('/storing-user', [RegistrationController::class, 'alphaReg'])->name('storing-users');
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+})->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
- 
+
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return back()->with('message', 'Verification link sent!');
