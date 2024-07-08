@@ -8,22 +8,25 @@ use App\Models\User;
 use Midtrans\Config;
 use App\GenerateRandom;
 use App\Models\Payment;
+use App\Models\Regency;
+use App\Models\District;
+use App\Models\Province;
 use Midtrans\Notification;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class RegistrationController extends Controller
 {
-    public function register(Request $request)
-    {
+    public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'gender' => 'required',
             'domisili' => 'required',
@@ -92,7 +95,10 @@ class RegistrationController extends Controller
 
 
     public function form(){
-        return view('admin.formFunRun');
+        $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        return view('admin.formFunRun', compact('provinces','regencies','districts'));
     }
 
     public function hasilScan($id){
@@ -131,5 +137,20 @@ class RegistrationController extends Controller
             return "Pembayaran Gagal !";
         }
         }
+    }
+
+
+    public function alphaReg(Request $request){
+        $validator = $request->validate([
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8'
+        ]);
+        $user = User::create([
+            'email' => $validator['email'],
+            'password' => Hash::make($validator['password'])
+        ]);
+        event(new Registered($user));
+        Auth::login($user);
+        return redirect()->route('verification.notice');
     }
 }

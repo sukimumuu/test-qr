@@ -71,36 +71,42 @@
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Provinsi</label>
-                                                <select id="inputState" class="form-select" name="domisili">
+                                                <label for="inputProv" class="form-label">Provinsi</label>
+                                                <select id="inputProv" class="form-select" name="domisili">
                                                     <option selected>Pilih provinsi</option>
-                                                    <option value="Jawa Tengah">Jawa Tengah</option>
+                                                    @foreach ($provinces as $provinsi)
+                                                        <option value="{{ $provinsi->id }}">{{ $provinsi->name }}</option>
+                                                    @endforeach
+                                                    {{-- <option value="Jawa Tengah">Jawa Tengah</option>
                                                     <option value="Jawa Timur">Jawa Timur</option>
-                                                    <option value="Jawa Barat">Jawa Barat</option>
+                                                    <option value="Jawa Barat">Jawa Barat</option> --}}
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Kabupaten</label>
-                                                <select id="inputState" class="form-select" name="distrik">
+                                                <label for="inputKab" class="form-label">Kabupaten</label>
+                                                <select id="inputKab" class="form-select" name="distrik">
                                                     <option selected>Pilih kabupaten</option>
-                                                    <option value="Banyumas">Banyumas</option>
+                                                    {{-- @foreach ($regencies as $kabupaten)
+                                                        <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}</option>
+                                                    @endforeach --}}
+                                                    {{-- <option value="Banyumas">Banyumas</option>
                                                     <option value="Purbalingga">Purbalingga</option>
                                                     <option value="Malang">Malang</option>
                                                     <option value="Madura">Madura</option>
-                                                    <option value="Bandung">Bandung</option>
+                                                    <option value="Bandung">Bandung</option> --}}
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Kecamatan</label>
-                                                <select id="inputState" class="form-select" name="kecamatan">
+                                                <label for="inputKecamatan" class="form-label">Kecamatan</label>
+                                                <select id="inputKecamatan" class="form-select" name="kecamatan">
                                                     <option selected>Pilih kecamatan</option>
-                                                    <option value="Purwokerto Utara">Purwokerto Utara</option>
+                                                    {{-- <option value="Purwokerto Utara">Purwokerto Utara</option>
                                                     <option value="Baturaden">Baturaden</option>
-                                                    <option value="KaliCupak">KaliCupak</option>
+                                                    <option value="KaliCupak">KaliCupak</option> --}}
                                                 </select>
                                             </div>
                                         </div>
@@ -190,7 +196,55 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#inputProv').change(function() {
+                var provId = $(this).val();
+                if (provId) {
+                    $.ajax({
+                        url: '/dapatkan/kabupaten/' + provId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#inputKab').empty();
+                            $('#inputKab').append('<option selected>Pilih kabupaten</option>');
+                            $.each(data, function(key, value) {
+                                $('#inputKab').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#inputKab').empty();
+                    $('#inputKab').append('<option selected>Pilih kabupaten</option>');
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#inputKab').change(function() {
+                var kecId = $(this).val();
+                if (kecId) {
+                    $.ajax({
+                        url: '/dapatkan/kecamatan/' + kecId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#inputKecamatan').empty();
+                            $('#inputKecamatan').append('<option selected>Pilih kecamatan</option>');
+                            $.each(data, function(key, value) {
+                                $('#inputKecamatan').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#inputKecamatan').empty();
+                    $('#inputKecamatan').append('<option selected>Pilih kecamatan</option>');
+                }
+            });
+        });
+    </script>
     <script>
         function toggleNamaKomunitas() {
             const komunitasSelect = document.getElementById('komunitas');

@@ -18,7 +18,7 @@ class AdminController extends Controller
         $nowInJakarta = Carbon::now('Asia/Jakarta');
         $date = Carbon::createFromFormat('Y-m-d H:i:s', '2024-07-02 12:00:00', 'Asia/Jakarta');
         if ($user) {
-            if (!$user->verification_admin) {
+            if ($user->verification_admin == NULL) {
                 $user->verification_admin = $nowInJakarta->toDateTimeString();
                 $user->save();
                 return response()->json([
@@ -27,7 +27,7 @@ class AdminController extends Controller
                 ]);
             } else {
                 return response()->json([
-                    'message' => "User sudah diverifikasi LOL ! Mau curang ya ?!\nIni nih buktinya : Akun diverifikasi tanggal ". $user->verification_admin,
+                    'message' => "User sudah diverifikasi! \n Akun diverifikasi tanggal ". $user->verification_admin,
                 ], 404);
             }
         } else {
