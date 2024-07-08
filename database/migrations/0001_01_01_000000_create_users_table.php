@@ -13,24 +13,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('gender');
-            $table->string('domisili');
-            $table->string('distrik');
-            $table->string('kecamatan');
-            $table->string('phone');
-            $table->string('size');
-            $table->string('age');
-            $table->string('phone_urgent');
-            $table->string('contant_urgent');
-            $table->string('relation_urgent');
-            $table->string('community');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('domisili')->nullable();
+            $table->string('distrik')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('size')->nullable();
+            $table->string('age')->nullable();
+            $table->string('phone_urgent')->nullable();
+            $table->string('contant_urgent')->nullable();
+            $table->string('relation_urgent')->nullable();
+            $table->string('community')->nullable();
             $table->string('name_community')->nullable();
-            $table->string('tokens_account');
-            $table->string('participant_number');
-            $table->string('kode_pay');
+            $table->string('tokens_account')->nullable();
+            $table->string('participant_number')->nullable();
+            $table->string('kode_pay')->nullable();
             $table->enum('status', ['settlement','pending'])->default('pending');
             $table->timestamp('verification_admin', precision: 0)->nullable();
             $table->timestamps();
@@ -52,7 +53,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
 };

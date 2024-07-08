@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Scan Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('asset/css/hasilScane/main.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('asset/css/hasilScane/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
 </head>
   <body>
@@ -19,33 +19,33 @@
                                 <div class="row col-12 col-md-12">
                                     <img src="{{ asset('asset/img/success.png') }}" class="mx-auto" style="width: 200px" alt="">
                                     <h3 class="text-center mt-3 fw-bold fs-2">Sobat lari telah terverifikasi!!</h3>
-                                    <span class="mt-3 fw-bold fs-3 text-center mb-2">Nomor Peserta : 0001</span>
+                                    <span class="mt-3 fw-bold fs-3 text-center mb-2">Nomor Peserta : {{ $user->participant_number }}</span>
                                     <div class="table-responsive d-flex justify-content-center mx-auto">
                                         <table class="table-borderless">
                                             <tbody>
                                                 <tr>
                                                     <th>Nama</th>
-                                                    <td>: Vindra Arya Yulian</td>
+                                                    <td>: {{ $user->name }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>Gander</th>
-                                                    <td>: Male</td>
+                                                    <th>Jenis Kelamin</th>
+                                                    <td>: {{ $user->gender }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Email</th>
-                                                    <td>: vindrayulian@gmail.com</td>
+                                                    <td>: {{ $user->email }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Domisili</th>
-                                                    <td>: Purwokerto</td>
+                                                    <td>: {{ $user->domisili }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Size Jersey</th>
-                                                    <td>: L</td>
+                                                    <td>: {{ $user->size }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Waktu Pembayaran</th>
-                                                    <td>: Selasa, 2 Juli 2024</td>
+                                                    <td>: {{ $user->created_at }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Via Pembayaran</th>
@@ -57,7 +57,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Status</th>
-                                                    <td>: Lunas</td>
+                                                    <td>: {{ $user->status }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
