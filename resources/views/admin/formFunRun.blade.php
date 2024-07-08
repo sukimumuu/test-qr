@@ -59,7 +59,7 @@
                                         <div class="col-12 col-md-6">
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Email</label>
-                                                <input type="email" class="form-control" name="email" placeholder="masukan email anda">
+                                                <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">

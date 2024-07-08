@@ -38,7 +38,7 @@ Route::get('/login', function(){
 Route::get('/logout', function(){
     Auth::logout();
 })->name('logout');
-Route::middleware(['auth', 'verified', 'signed'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/register', [RegistrationController::class, 'register'])->name('register');
     Route::post('/paymentHandler', [RegistrationController::class, 'paymentHandler'])->name('paymentHandler');
     Route::post('/verify-qr', [AdminController::class, 'verifyQrCode']);
