@@ -19,7 +19,7 @@
                                 <div class="row col-12 col-md-12">
                                     <img src="{{ asset('asset/img/success.png') }}" class="mx-auto" style="width: 200px" alt="">
                                     <h3 class="text-center mt-3 fw-bold fs-2">Sobat lari telah terverifikasi!!</h3>
-                                    <span class="mt-3 fw-bold fs-3 text-center mb-2">Nomor Peserta : {{ $user->participant_number }}</span>
+                                    <span class="mt-3 fw-bold fs-3 text-center mb-2">Nomor Peserta : {{ $user->participant_numberssa }}</span>
                                     <div class="table-responsive d-flex justify-content-center mx-auto">
                                         <table class="table-borderless">
                                             <tbody>

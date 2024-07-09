@@ -64,25 +64,14 @@
                                                     @foreach ($provinces as $provinsi)
                                                         <option value="{{ $provinsi->id }}">{{ $provinsi->name }}</option>
                                                     @endforeach
-                                                    {{-- <option value="Jawa Tengah">Jawa Tengah</option>
-                                                    <option value="Jawa Timur">Jawa Timur</option>
-                                                    <option value="Jawa Barat">Jawa Barat</option> --}}
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <div class="mb-3">
                                                 <label for="inputKab" class="form-label">Kabupaten</label>
-                                                <select id="inputKab" class="form-select" name="distrik">
+                                                <select id="inputKab" class="form-select" name="kabupaten">
                                                     <option selected>Pilih kabupaten</option>
-                                                    {{-- @foreach ($regencies as $kabupaten)
-                                                        <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}</option>
-                                                    @endforeach --}}
-                                                    {{-- <option value="Banyumas">Banyumas</option>
-                                                    <option value="Purbalingga">Purbalingga</option>
-                                                    <option value="Malang">Malang</option>
-                                                    <option value="Madura">Madura</option>
-                                                    <option value="Bandung">Bandung</option> --}}
                                                 </select>
                                             </div>
                                         </div>
@@ -91,20 +80,14 @@
                                                 <label for="inputKecamatan" class="form-label">Kecamatan</label>
                                                 <select id="inputKecamatan" class="form-select" name="kecamatan">
                                                     <option selected>Pilih kecamatan</option>
-                                                    {{-- <option value="Purwokerto Utara">Purwokerto Utara</option>
-                                                    <option value="Baturaden">Baturaden</option>
-                                                    <option value="KaliCupak">KaliCupak</option> --}}
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-3">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Desa</label>
-                                                <select id="" class="form-select" name="">
+                                                <label for="inputDesa" class="form-label">Desa</label>
+                                                <select id="inputDesa" class="form-select" name="desa">
                                                     <option selected>Pilih desa</option>
-                                                    {{-- <option value="Purwokerto Utara">Purwokerto Utara</option>
-                                                    <option value="Baturaden">Baturaden</option>
-                                                    <option value="KaliCupak">KaliCupak</option> --}}
                                                 </select>
                                             </div>
                                         </div>
@@ -269,6 +252,30 @@
                 } else {
                     $('#inputKecamatan').empty();
                     $('#inputKecamatan').append('<option selected>Pilih kecamatan</option>');
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#inputKecamatan').change(function() {
+                var desaId = $(this).val();
+                if (desaId) {
+                    $.ajax({
+                        url: '/dapatkan/desa/' + desaId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#inputDesa').empty();
+                            $('#inputDesa').append('<option selected>Pilih Desa</option>');
+                            $.each(data, function(key, value) {
+                                $('#inputDesa').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#inputDesa').empty();
+                    $('#inputDesa').append('<option selected>Pilih Desa</option>');
                 }
             });
         });

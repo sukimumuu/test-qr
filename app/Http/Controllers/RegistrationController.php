@@ -29,7 +29,7 @@ class RegistrationController extends Controller
             'name' => 'required',
             'gender' => 'required',
             'domisili' => 'required',
-            'distrik' => 'required',
+            'kabupaten' => 'required',
             'kecamatan' => 'required',
             'size' => 'required',
             'phone' => 'required',
@@ -78,7 +78,7 @@ class RegistrationController extends Controller
             'name' => $request->name,
             'gender' => $request->gender,
             'domisili' => $request->domisili,
-            'distrik' => $request->distrik,
+            'kabupaten' => $request->kabupaten,
             'kecamatan' => $request->kecamatan,
             'phone' => $request->phone,
             'size' => $request->size,
@@ -109,6 +109,7 @@ class RegistrationController extends Controller
 
     public function hasilScan($id){
         $user = User::find($id);
+        $domilisi = Province::where('id');
         return view('admin.hasilScan', compact('user'));
     }
 

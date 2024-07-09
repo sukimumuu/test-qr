@@ -1,4 +1,5 @@
 <?php
+use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -48,14 +49,19 @@ Route::post('/cek', function(Request $request){
 Route::get('/logout', function(){
     Auth::logout();
 })->name('logout');
-Route::get('/', [RegistrationController::class, 'form'])->name('form');
+Route::get('/getter', function(){
+    $domilisi = Province::where('id', 33)->pluck('name');
+    return $domilisi;
+})->name('getter');
 
+Route::get('/', [RegistrationController::class, 'form'])->name('form');
 Route::post('/paymentHandler', [RegistrationController::class, 'paymentHandler'])->name('paymentHandler');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/register', [RegistrationController::class, 'register'])->name('register');
     Route::get('/dapatkan/kabupaten/{provId}', [RegionController::class, 'getKabupaten']);
     Route::get('/dapatkan/kecamatan/{kecId}', [RegionController::class, 'getKecamatan']);
+    Route::get('/dapatkan/desa/{desaId}', [RegionController::class, 'getDesa']);
     Route::get('/registration-success', [RegistrationController::class, 'registrationSuccess'])->name('registration-success');
     Route::get('/registration-failed', [RegistrationController::class, 'registrationFailed'])->name('registration-failed');
 });

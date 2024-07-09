@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('gender')->nullable();
             $table->string('domisili')->nullable();
-            $table->string('distrik')->nullable();
+            $table->string('kabupaten')->nullable();
             $table->string('kecamatan')->nullable();
+            $table->string('desa')->nullable();
             $table->string('phone')->nullable();
             $table->string('size')->nullable();
             $table->string('age')->nullable();
