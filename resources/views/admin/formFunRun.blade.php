@@ -56,7 +56,7 @@
                                                 <input type="text" class="form-control" name="age" placeholder="Usia">
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4">
+                                        <div class="col-12 col-md-3">
                                             <div class="mb-3">
                                                 <label for="inputProv" class="form-label">Provinsi</label>
                                                 <select id="inputProv" class="form-select" name="domisili">
@@ -70,7 +70,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4">
+                                        <div class="col-12 col-md-3">
                                             <div class="mb-3">
                                                 <label for="inputKab" class="form-label">Kabupaten</label>
                                                 <select id="inputKab" class="form-select" name="distrik">
@@ -86,7 +86,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4">
+                                        <div class="col-12 col-md-3">
                                             <div class="mb-3">
                                                 <label for="inputKecamatan" class="form-label">Kecamatan</label>
                                                 <select id="inputKecamatan" class="form-select" name="kecamatan">
@@ -95,6 +95,39 @@
                                                     <option value="Baturaden">Baturaden</option>
                                                     <option value="KaliCupak">KaliCupak</option> --}}
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Desa</label>
+                                                <select id="" class="form-select" name="">
+                                                    <option selected>Pilih desa</option>
+                                                    {{-- <option value="Purwokerto Utara">Purwokerto Utara</option>
+                                                    <option value="Baturaden">Baturaden</option>
+                                                    <option value="KaliCupak">KaliCupak</option> --}}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Golongan Darah</label>
+                                                <select id="" class="form-select" name="">
+                                                    <option selected>Pilih golongan darah</option>
+                                                    <option value="A+">A+</option>
+                                                    <option value="A-">A-</option>
+                                                    <option value="B+">B+</option>
+                                                    <option value="B-">B-</option>
+                                                    <option value="AB-">AB-</option>
+                                                    <option value="AB+">AB+</option>
+                                                    <option value="O+">O+</option>
+                                                    <option value="O-">O-</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Riwayat Penyakit</label>
+                                                <input type="text" class="form-control" name="" placeholder="riwayat penyakit">
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6">

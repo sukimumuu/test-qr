@@ -48,6 +48,7 @@ Route::post('/cek', function(Request $request){
 Route::get('/logout', function(){
     Auth::logout();
 })->name('logout');
+Route::get('/', [RegistrationController::class, 'form'])->name('form');
 
 Route::post('/paymentHandler', [RegistrationController::class, 'paymentHandler'])->name('paymentHandler');
 
@@ -55,7 +56,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/register', [RegistrationController::class, 'register'])->name('register');
     Route::get('/dapatkan/kabupaten/{provId}', [RegionController::class, 'getKabupaten']);
     Route::get('/dapatkan/kecamatan/{kecId}', [RegionController::class, 'getKecamatan']);
-    Route::get('/', [RegistrationController::class, 'form'])->name('form');
     Route::get('/registration-success', [RegistrationController::class, 'registrationSuccess'])->name('registration-success');
     Route::get('/registration-failed', [RegistrationController::class, 'registrationFailed'])->name('registration-failed');
 });
