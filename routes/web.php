@@ -23,6 +23,8 @@ Route::get('/sent', function () {
 Route::get('/scan', function () {
     return view('admin.scan');
 });
+Route::get('/hasilScan/{id}', [RegistrationController::class, 'hasilScan'])->name('hasilScan');
+Route::post('/verify-qr', [AdminController::class, 'verifyQrCode']);
 Route::get('/alpha-registration', function(){
     return view('auth.regis');
 });
@@ -44,17 +46,24 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('/login', function(){
     return "INI ADALAH LOGIN";
 })->name('login');
+Route::post('/cek', function(Request $request){
+    if (Auth::attempt($request->only('email','password'))) {
+        return redirect()->route('form');
+    }
+    return back();
+})->name('cek');
+
 Route::get('/logout', function(){
     Auth::logout();
 })->name('logout');
 Route::get('/', [RegistrationController::class, 'form'])->name('form');
-Route::middleware(['auth', 'verified', 'signed'])->group(function () {
+
+Route::post('/paymentHandler', [RegistrationController::class, 'paymentHandler'])->name('paymentHandler');
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/register', [RegistrationController::class, 'register'])->name('register');
-    Route::post('/paymentHandler', [RegistrationController::class, 'paymentHandler'])->name('paymentHandler');
-    Route::post('/verify-qr', [AdminController::class, 'verifyQrCode']);
     Route::get('/dapatkan/kabupaten/{provId}', [RegionController::class, 'getKabupaten']);
     Route::get('/dapatkan/kecamatan/{kecId}', [RegionController::class, 'getKecamatan']);
-    Route::get('/hasilScan/{id}', [RegistrationController::class, 'hasilScan'])->name('hasilScan');
     Route::get('/registration-success', [RegistrationController::class, 'registrationSuccess'])->name('registration-success');
     Route::get('/registration-failed', [RegistrationController::class, 'registrationFailed'])->name('registration-failed');
 });

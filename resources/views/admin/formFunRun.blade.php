@@ -184,6 +184,14 @@
                                                 <input type="text" id="namaKomunitas" name="name_community" class="form-control mt-2" placeholder="nama komunitas">
                                             </div>
                                         </div>
+                                        <select class="form-select" aria-label="Default select example" name="payment_type">
+                                            <option selected>Pilih Pembayaran</option>
+                                            <option value="gopay">GoPay</option>
+                                            <option value="shopeepay">ShopeePay</option>
+                                            <option value="other_qris">Qris (QRis, Dana, OVO, LinkAja)</option>
+                                            <option value="bank_merchant">Bank Merchant</option>
+                                            <option value="credit_card">Kartu Kredit</option>
+                                        </select>
                                         <div class="mb-3 text-end">
                                             <a href="" class="btn btn-submit rounded-5 text-dark fw-bold border-1 border"  data-bs-toggle="modal" data-bs-target="#daftar">Daftar</a>
                                         </div>

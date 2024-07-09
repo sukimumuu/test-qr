@@ -12,6 +12,9 @@
                     },
                     onError: function(result) {
                         window.location.href = '/registration-failed';
+                    },
+                    onClose: function(){
+                        window.location.href = '/';
                     }
                 });
             });

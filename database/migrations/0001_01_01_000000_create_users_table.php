@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('community')->nullable();
             $table->string('name_community')->nullable();
             $table->string('tokens_account')->nullable();
+            $table->string('payment_type')->nullable();
             $table->string('participant_number')->nullable();
             $table->string('kode_pay')->nullable();
             $table->enum('status', ['settlement','pending'])->default('pending');
