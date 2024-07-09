@@ -4,10 +4,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
+// ========== Peserta ==========
+Route::get('/profile', [ProfileController::class, 'indexProfile'])->name('profile');
+
+// ========== Peserta ==========
+Route::get('/peserta', [PesertaController::class, 'indexPeserta'])->name('peserta');
 
 
 Route::get('/sent', function () {
