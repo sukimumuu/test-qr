@@ -25,7 +25,7 @@
                     </div>
                     <h3 class="text-center fw-bold mt-3 mb-3">Pendaftaran Event FunRun Rotary <br> Purwokerto 2024</h3>
                     <div class="row col-12 col-md-8 mx-auto">
-                        <form action="{{ route('register') }}" method="post">
+                        <form action="{{ route('storing-users') }}" method="post">
                             @csrf
                             <div class="card p-0 mb-3 gradient-background kaca">
                                 <div class="card-header" style="background: transparent; border: none; z-index: 2">
@@ -48,7 +48,36 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 text-center">
-                                            <a href="" class="btn btn-submit rounded-5 text-dark fw-bold border-1 border">Submit</a>
+                                            <button type="submit" class="btn btn-submit rounded-5 text-dark fw-bold border-1 border">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="{{ route('cek') }}" method="post">
+                            @csrf
+                            <div class="card p-0 mb-3 gradient-background kaca">
+                                <div class="card-header" style="background: transparent; border: none; z-index: 2">
+                                    <h3 class="text-dark">Login</h3>
+                                    <span class="border-bottom border-dark border-3 rounded-2" style="width: 120px"></span>
+                                </div>
+                                <div class="card-body p-0" style="z-index: 2">
+                                    <div class="row col-12 col-md-12 mx-auto">
+                                        <div class="col-12 col-md-12">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Email</label>
+                                                <input type="email" class="form-control" name="email" placeholder="masukan email anda">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-12">
+                                            <div class="mb-3 position-relative">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="masukan password">
+                                                <i class="eye-icon ri-eye-line" id="togglePassword" onclick="togglePassword()"></i>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 text-center">
+                                            <button type="submit" class="btn btn-submit rounded-5 text-dark fw-bold border-1 border">Submit</button>
                                         </div>
                                     </div>
                                 </div>

@@ -56,19 +56,6 @@
                                                 <input type="text" class="form-control" name="age" placeholder="Usia">
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="mb-3">
-                                                <label for="" class="form-label">Email</label>
-                                                <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <div class="mb-3 position-relative">
-                                                <label for="password" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="masukan password">
-                                                <i class="eye-icon ri-eye-line" id="togglePassword" onclick="togglePassword()"></i>
-                                            </div>
-                                        </div>
                                         <div class="col-12 col-md-4">
                                             <div class="mb-3">
                                                 <label for="inputProv" class="form-label">Provinsi</label>
@@ -164,6 +151,14 @@
                                                 <input type="text" id="namaKomunitas" name="name_community" class="form-control mt-2" placeholder="nama komunitas">
                                             </div>
                                         </div>
+                                        <select class="form-select" aria-label="Default select example" name="payment_type">
+                                            <option selected>Pilih Pembayaran</option>
+                                            <option value="gopay">GoPay</option>
+                                            <option value="shopeepay">ShopeePay</option>
+                                            <option value="other_qris">Qris (QRis, Dana, OVO, LinkAja)</option>
+                                            <option value="bank_merchant">Bank Merchant</option>
+                                            <option value="credit_card">Kartu Kredit</option>
+                                        </select>
                                         <div class="mb-3 text-end">
                                             <a href="" class="btn btn-submit rounded-5 text-dark fw-bold border-1 border"  data-bs-toggle="modal" data-bs-target="#daftar">Daftar</a>
                                         </div>

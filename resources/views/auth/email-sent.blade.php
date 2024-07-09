@@ -11,11 +11,10 @@
 <body>
     <div class="container">
         <div class="row">
-
             <h3 class="fw-bold">Hallo, </h3>
             <span>Click tombol di bawah untuk melalukan verifikasi email kamu</span>
             <div class="d-flex justify-content-center">
-                <a href="" class="btn btn-dark">Verifikasi Email</a>
+                <a href="{{ $url }}" class="btn btn-dark">Verifikasi Email</a>
             </div>
             <footer>
                 <div class="row">

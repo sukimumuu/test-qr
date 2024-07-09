@@ -28,7 +28,7 @@
                                     <h3 class="fw-bold text-center">Pembayaran Kamu Berhasil!!</h3>
                                     <div class="d-flex justify-content-center align-items-center gap-2">
                                         <span>Terima kasih atas pembayaran Anda Kita tunggu di FunRun Rotary Purwokerto</span>
-                                        <a href="" class="btn btn-submit">Kembali ke halaman utama</a>
+                                        <a href="{{ route('form') }}" class="btn btn-submit">Kembali ke halaman utama</a>
                                     </div>
                                 </div>
                             </div>

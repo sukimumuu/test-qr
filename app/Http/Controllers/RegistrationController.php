@@ -27,7 +27,6 @@ class RegistrationController extends Controller
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'password' => 'required|min:6',
             'gender' => 'required',
             'domisili' => 'required',
             'distrik' => 'required',
@@ -44,19 +43,27 @@ class RegistrationController extends Controller
         if ($validator->fails()) {
         return redirect()->back()->withErrors($validator)->withInput();
         }
+        $id_user = Auth::user()->id;
+        $user = User::find($id_user);
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         Config::$isProduction = false;
         Config::$isSanitized = true;
         Config::$is3ds = true;
+        $paymentType = $request->input('payment_type');
+        $adminFee = $this->getAdminFee($paymentType);
+        $ticketPrice = 150000;
+        $grossAmount = $ticketPrice + $adminFee;
+
         $params = array(
             'transaction_details' => array(
                 'order_id' => Str::uuid(),
-                'gross_amount' => 150000,
+                'gross_amount' => $grossAmount,
             ),
             'customer_details' => array(
                 'first_name' => $request->name,
-                'email' => $request->email,
+                'email' => $user->email,
             ),
+            'enabled_payments' => $this->getEnabledPayments($paymentType),
         );
          $numberRand = new GenerateRandom();
         $tokenAcc = $numberRand->generateRandomString(10);
@@ -67,9 +74,8 @@ class RegistrationController extends Controller
         } else {
             $newNumber = '0001';
         }
-        $user = User::create([
+        $user->update([
             'name' => $request->name,
-            'email' => $request->email,
             'gender' => $request->gender,
             'domisili' => $request->domisili,
             'distrik' => $request->distrik,
@@ -85,9 +91,9 @@ class RegistrationController extends Controller
             'relation_urgent' => $request->relation_urgent,
             'community' => $request->community,
             'name_community' => $request->name_community,
+            'payment_type' => $request->payment_type,
             'participant_number' => $newNumber,
             'kode_pay' => $params['transaction_details']['order_id'],
-            'password' => Hash::make($request->password),
         ]);
         $snapToken = Snap::getSnapToken($params);
         return view('pembayaran', ['snapToken' => $snapToken]);
@@ -152,5 +158,43 @@ class RegistrationController extends Controller
         event(new Registered($user));
         Auth::login($user);
         return redirect()->route('verification.notice');
+    }
+
+     private function getAdminFee($paymentType)
+    {
+        switch ($paymentType) {
+            case 'gopay':
+                return 3000;
+            case 'shopeepay':
+                return 3000;
+            case 'other_qris':
+                return 1050;
+            case 'bank_merchant':
+                return 4000;
+            case 'credit_card':
+                return 6350;
+            default:
+                return 0; // Default, jika tidak ada jenis pembayaran yang cocok
+        }
+    }
+
+    // Fungsi untuk mendapatkan metode pembayaran yang diaktifkan berdasarkan jenis pembayaran
+    private function getEnabledPayments($paymentType)
+    {
+        switch ($paymentType) {
+            case 'gopay':
+                return ['gopay'];
+            case 'shopeepay':
+                return ['shopeepay'];
+            case 'other_qris':
+                return ['other_qris'];
+            case 'bank_merchant':
+                return ['bank_transfer']; // Bank Transfer untuk bank merchant
+            case 'credit_card':
+                return ['credit_card'];
+            default:
+                // Default, aktifkan semua metode pembayaran yang didukung oleh Midtrans
+                return ['credit_card', 'gopay', 'bank_transfer', 'echannel'];
+        }
     }
 }
