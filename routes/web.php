@@ -4,10 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PesertaController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\PesertaController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -72,6 +73,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dapatkan/desa/{desaId}', [RegionController::class, 'getDesa']);
     Route::get('/registration-success', [RegistrationController::class, 'registrationSuccess'])->name('registration-success');
     Route::get('/registration-failed', [RegistrationController::class, 'registrationFailed'])->name('registration-failed');
+});
+
+
+Route::get('/generate-certificate/{name}', [CertificateController::class, 'generateCertificate'])->name('generate-certificate');
+Route::post('/reg-for-sertif', [CertificateController::class, 'reg'])->name('reg-test');
+Route::get('/test-reg', function(){
+    return view('test-reg');
 });
 
 
